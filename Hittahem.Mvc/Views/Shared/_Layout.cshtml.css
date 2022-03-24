@@ -6,6 +6,10 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
+.logga {
+   width: 40px;
+   margin:20px;
+}
 
 a {
   color: #0077cc;
