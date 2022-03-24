@@ -1,8 +1,8 @@
-﻿using Hittahem.Mvc.Models;
+﻿using HittaHemMvc.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Hittahem.Mvc.Controllers
+namespace HittaHemMvc.Core.Controllers
 {
     public class HomeController : Controller
     {
