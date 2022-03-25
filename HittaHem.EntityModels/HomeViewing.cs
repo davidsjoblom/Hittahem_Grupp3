@@ -6,20 +6,18 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace HittaHem.Mvc.Models
+namespace HittaHemDemo.Models
 {
-    public partial class Image
+    public partial class HomeViewing
     {
         [Key]
-        public int Image_Id { get; set; }
-        [Column("Image")]
-        public byte[] Image1 { get; set; }
-        public int? Home_Id { get; set; }
+        public int Id { get; set; }
+        public int HomeId { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime? UploadingDate { get; set; }
+        public DateTime ViewingDate { get; set; }
 
-        [ForeignKey(nameof(Home_Id))]
-        [InverseProperty("Images")]
+        [ForeignKey(nameof(HomeId))]
+        [InverseProperty("HomeViewings")]
         public virtual Home Home { get; set; }
     }
 }

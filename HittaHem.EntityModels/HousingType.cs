@@ -6,9 +6,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace HittaHem.Mvc.Models
+namespace HittaHemDemo.Models
 {
-    [Table("HousingType")]
     public partial class HousingType
     {
         public HousingType()
@@ -17,8 +16,9 @@ namespace HittaHem.Mvc.Models
         }
 
         [Key]
-        public int HousingType_Id { get; set; }
-        [StringLength(50)]
+        public int Id { get; set; }
+        [Required]
+        [StringLength(250)]
         public string Type { get; set; }
 
         [InverseProperty(nameof(Home.HousingType))]

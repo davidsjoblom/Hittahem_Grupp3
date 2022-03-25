@@ -6,55 +6,61 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace HittaHem.Mvc.Models
+namespace HittaHemDemo.Models
 {
-    [Table("Home")]
     public partial class Home
     {
         public Home()
         {
             Favourites = new HashSet<Favourite>();
-            Images = new HashSet<Image>();
+            HomeImages = new HashSet<HomeImage>();
+            HomeViewings = new HashSet<HomeViewing>();
+            InterestedUsers = new HashSet<InterestedUser>();
         }
 
         [Key]
-        public int Home_Id { get; set; }
-        public int? Address_Id { get; set; }
+        public int Id { get; set; }
+        public int MunicipalityId { get; set; }
         [Column(TypeName = "money")]
         public decimal? Price { get; set; }
         public string Description { get; set; }
-        public int? RoomsAmount { get; set; }
+        public int RoomAmount { get; set; }
         [Column(TypeName = "decimal(18, 0)")]
-        public decimal? LivingArea { get; set; }
+        public decimal LivingArea { get; set; }
         [Column(TypeName = "decimal(18, 0)")]
         public decimal? UninhabitableArea { get; set; }
         [Column(TypeName = "decimal(18, 0)")]
         public decimal? GardenArea { get; set; }
-        public int? HousingType_Id { get; set; }
-        public int? AssignmentForm_Id { get; set; }
+        public int HousingTypeId { get; set; }
+        public int OwnershipTypeId { get; set; }
         [Column(TypeName = "date")]
         public DateTime? BuildYear { get; set; }
-        public int? User_Id { get; set; }
-        public int? Viewing_Id { get; set; }
+        [Required]
+        [StringLength(250)]
+        public string UserId { get; set; }
+        public int StreetId { get; set; }
+        [StringLength(250)]
+        public string StreetNr { get; set; }
 
-        [ForeignKey(nameof(Address_Id))]
-        [InverseProperty("Homes")]
-        public virtual Address Address { get; set; }
-        [ForeignKey(nameof(AssignmentForm_Id))]
-        [InverseProperty("Homes")]
-        public virtual AssignmentForm AssignmentForm { get; set; }
-        [ForeignKey(nameof(HousingType_Id))]
+        [ForeignKey(nameof(HousingTypeId))]
         [InverseProperty("Homes")]
         public virtual HousingType HousingType { get; set; }
-        [ForeignKey(nameof(User_Id))]
+        [ForeignKey(nameof(MunicipalityId))]
         [InverseProperty("Homes")]
-        public virtual User User { get; set; }
-        [ForeignKey(nameof(Viewing_Id))]
+        public virtual Municipality Municipality { get; set; }
+        [ForeignKey(nameof(OwnershipTypeId))]
         [InverseProperty("Homes")]
-        public virtual Viewing Viewing { get; set; }
+        public virtual OwnershipType OwnershipType { get; set; }
+        [ForeignKey(nameof(StreetId))]
+        [InverseProperty("Homes")]
+        public virtual Street Street { get; set; }
         [InverseProperty(nameof(Favourite.Home))]
         public virtual ICollection<Favourite> Favourites { get; set; }
-        [InverseProperty(nameof(Image.Home))]
-        public virtual ICollection<Image> Images { get; set; }
+        [InverseProperty(nameof(HomeImage.Home))]
+        public virtual ICollection<HomeImage> HomeImages { get; set; }
+        [InverseProperty(nameof(HomeViewing.Home))]
+        public virtual ICollection<HomeViewing> HomeViewings { get; set; }
+        [InverseProperty(nameof(InterestedUser.Home))]
+        public virtual ICollection<InterestedUser> InterestedUsers { get; set; }
     }
 }

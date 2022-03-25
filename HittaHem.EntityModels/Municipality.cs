@@ -6,26 +6,21 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace HittaHem.Mvc.Models
+namespace HittaHemDemo.Models
 {
-    [Table("Address")]
-    public partial class Address
+    public partial class Municipality
     {
-        public Address()
+        public Municipality()
         {
             Homes = new HashSet<Home>();
         }
 
         [Key]
-        public int Address_Id { get; set; }
-        [StringLength(50)]
-        public string City { get; set; }
-        [StringLength(50)]
-        public string Municipality { get; set; }
-        [StringLength(50)]
-        public string Street { get; set; }
+        public int Id { get; set; }
+        [StringLength(250)]
+        public string Name { get; set; }
 
-        [InverseProperty(nameof(Home.Address))]
+        [InverseProperty(nameof(Home.Municipality))]
         public virtual ICollection<Home> Homes { get; set; }
     }
 }

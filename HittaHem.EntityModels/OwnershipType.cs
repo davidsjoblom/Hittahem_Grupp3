@@ -6,22 +6,22 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace HittaHem.Mvc.Models
+namespace HittaHemDemo.Models
 {
-    [Table("AssignmentForm")]
-    public partial class AssignmentForm
+    public partial class OwnershipType
     {
-        public AssignmentForm()
+        public OwnershipType()
         {
             Homes = new HashSet<Home>();
         }
 
         [Key]
-        public int AssignmentForm_Id { get; set; }
-        [StringLength(50)]
-        public string AssignmentType { get; set; }
+        public int Id { get; set; }
+        [Required]
+        [StringLength(250)]
+        public string Name { get; set; }
 
-        [InverseProperty(nameof(Home.AssignmentForm))]
+        [InverseProperty(nameof(Home.OwnershipType))]
         public virtual ICollection<Home> Homes { get; set; }
     }
 }

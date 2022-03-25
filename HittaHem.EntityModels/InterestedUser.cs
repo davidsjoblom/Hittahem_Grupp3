@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HittaHemDemo.Models
 {
-    public partial class Favourite
+    public partial class InterestedUser
     {
         [Key]
         public int HomeId { get; set; }
@@ -17,7 +17,7 @@ namespace HittaHemDemo.Models
         public string UserId { get; set; }
 
         [ForeignKey(nameof(HomeId))]
-        [InverseProperty("Favourites")]
+        [InverseProperty("InterestedUsers")]
         public virtual Home Home { get; set; }
     }
 }

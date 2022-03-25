@@ -8,16 +8,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HittaHemDemo.Models
 {
-    public partial class Favourite
+    public partial class HomeImage
     {
         [Key]
+        public int Id { get; set; }
+        [Required]
+        public byte[] Image { get; set; }
         public int HomeId { get; set; }
-        [Key]
-        [StringLength(250)]
-        public string UserId { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime UploadingDate { get; set; }
 
         [ForeignKey(nameof(HomeId))]
-        [InverseProperty("Favourites")]
+        [InverseProperty("HomeImages")]
         public virtual Home Home { get; set; }
     }
 }
