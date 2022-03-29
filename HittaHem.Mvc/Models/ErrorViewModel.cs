@@ -1,4 +1,4 @@
-namespace HittaHemMvc.Core.Models
+namespace HittaHem.Mvc.Models
 {
     public class ErrorViewModel
     {
