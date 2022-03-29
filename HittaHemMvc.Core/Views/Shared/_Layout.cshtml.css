@@ -6,10 +6,15 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
+
 .logga {
    width: 40px;
    margin-right: 20px;
    margin-left: 20px;
+}
+
+nav-item {
+    align-items: center;
 }
 
 a {
@@ -28,6 +33,11 @@ a {
     background-color: #783937FF;
     border-color: #1861ac;
 }
+.navbar-light .navbar-nav .nav-link {
+    font-size: 25px;
+    color: #783937FF;
+}
+
 
 .border-top {
   border-top: 1px solid #e5e5e5;
