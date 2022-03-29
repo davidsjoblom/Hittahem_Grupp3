@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace HittaHemMvc.Core.Data.Migrations
+namespace HittaHem.Mvc.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

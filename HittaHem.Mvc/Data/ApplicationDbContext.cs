@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
-namespace HittaHemMvc.Core.Data
+namespace HittaHem.Mvc.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
