@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HittaHemDemo.Models
 {
-    public partial class Street
+    public  class Street
     {
         public Street()
         {

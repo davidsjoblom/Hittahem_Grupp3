@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HittaHemDemo.Models
 {
-    public partial class HousingType
+    public  class HousingType
     {
         public HousingType()
         {

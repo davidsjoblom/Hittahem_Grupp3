@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HittaHemDemo.Models
 {
-    public partial class HomeImage
+    public  class HomeImage
     {
         [Key]
         public int Id { get; set; }
