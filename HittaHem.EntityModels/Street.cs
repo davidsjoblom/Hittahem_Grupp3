@@ -10,10 +10,7 @@ namespace HittaHemEntityModels
 {
     public  class Street
     {
-        public Street()
-        {
-            Homes = new HashSet<Home>();
-        }
+   
 
         [Key]
         public int Id { get; set; }

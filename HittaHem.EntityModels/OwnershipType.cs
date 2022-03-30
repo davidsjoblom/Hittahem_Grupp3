@@ -10,10 +10,7 @@ namespace HittaHemEntityModels
 {
     public  class OwnershipType
     {
-        public OwnershipType()
-        {
-            Homes = new HashSet<Home>();
-        }
+    
 
         [Key]
         public int Id { get; set; }
