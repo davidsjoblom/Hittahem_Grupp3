@@ -10,14 +10,7 @@ namespace HittaHemEntityModels
 {
     public  class Home
     {
-        public Home()
-        {
-            Favourites = new HashSet<Favourite>();
-            HomeImages = new HashSet<HomeImage>();
-            HomeViewings = new HashSet<HomeViewing>();
-            InterestedUsers = new HashSet<InterestedUser>();
-        }
-
+   
         [Key]
         public int Id { get; set; }
         public int MunicipalityId { get; set; }

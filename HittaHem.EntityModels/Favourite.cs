@@ -12,7 +12,7 @@ namespace HittaHemEntityModels
     {
         [Key]
         public int HomeId { get; set; }
-        [Key]
+  
         [StringLength(250)]
         public string UserId { get; set; }
 

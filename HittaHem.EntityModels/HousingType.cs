@@ -10,11 +10,7 @@ namespace HittaHemEntityModels
 {
     public  class HousingType
     {
-        public HousingType()
-        {
-            Homes = new HashSet<Home>();
-        }
-
+     
         [Key]
         public int Id { get; set; }
         [Required]
