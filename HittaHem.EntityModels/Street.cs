@@ -11,13 +11,12 @@ namespace HittaHemEntityModels
     public  class Street
     {
       
-        [Key]
+
         public int Id { get; set; }
         [Required]
         [StringLength(250)]
         public string Name { get; set; }
-
-        [InverseProperty(nameof(Home.Street))]
-        public virtual ICollection<Home> Homes { get; set; }
+   
+        public  ICollection<Home> Homes { get; set; }
     }
 }

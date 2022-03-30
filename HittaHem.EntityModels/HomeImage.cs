@@ -10,16 +10,13 @@ namespace HittaHemEntityModels
 {
     public  class HomeImage
     {
-        [Key]
+     
         public int Id { get; set; }
         [Required]
         public byte[] Image { get; set; }
         public int HomeId { get; set; }
         [Column(TypeName = "date")]
         public DateTime UploadingDate { get; set; }
-
-        [ForeignKey(nameof(HomeId))]
-        [InverseProperty("HomeImages")]
-        public virtual Home Home { get; set; }
+        public  Home Home { get; set; }
     }
 }
