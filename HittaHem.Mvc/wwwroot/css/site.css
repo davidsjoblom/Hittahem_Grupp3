@@ -10,14 +10,14 @@ html {
   html {
     font-size: 20px;
   }
-    nav-item {
-        align-items: end;
-    }
+  nav-item {
+    align-items: end;
+  }
 
-    .navbar-light .navbar-nav .nav-link {
-        font-size: 20px;
-        color: #783937FF;
-    }
+ .navbar-light .navbar-nav .nav-link {
+    font-size: 20px;
+    color: #783937FF;
+ }
 }
 
 html {
@@ -31,13 +31,15 @@ body {
   text-align: center;
 }
 
-/*.text-dark {
-    color: #783937FF;
-}*/
-
 /*Använd text-header för alla rubriker */
 .text-header {
     color: #783937FF;
+}
+
+.btn-home {
+    color: #fff;
+    background-color: #783937FF;
+    border-color: #783937FF;
 }
 /*Kan bli fel på alla andra bilder*/
 img {
@@ -55,35 +57,7 @@ img {
     }
 }
 
-.search {
-    position: relative;
- box-shadow: 0 0 40px rgba(51, 51, 51, .1)
-}
 
-search input {
-   height: 60px;
-   text-indent: 25px;
-   border: 2px solid #783937FF
-}
-
-.search input:focus {
-        box-shadow: none;
-        border: 2px solid #783937FF;
-}
-.search .fa-search {
-        position: absolute;
-        top: 20px;
-        left: 16px
-}
-
-.search button {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        height: fit-content;
-        width: 100px;
-        background: #783937FF;
-}
 
 
 
