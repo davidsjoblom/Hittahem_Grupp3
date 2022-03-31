@@ -11,8 +11,7 @@ namespace HittaHemEntityModels
     public class HomeViewing
     {
        
-        public int Id { get; set; }
-        
+        public int Id { get; set; }  
         public DateTime ViewingDate { get; set; }
         public  Home Home { get; set; }
     }

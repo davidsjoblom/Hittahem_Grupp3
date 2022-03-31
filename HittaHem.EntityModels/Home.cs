@@ -24,13 +24,16 @@ namespace HittaHemEntityModels
         public decimal? GardenArea { get; set; }
         [Column(TypeName = "date")]
         public DateTime? BuildYear { get; set; }
-      
+        public HousingType Id { get; set; }
         [Required(ErrorMessage="Obligatoriskt fält")]
         public HousingType HousingType { get; set; }      
         [Required(ErrorMessage = "Obligatoriskt fält")]
+        public Municipality MunicipalityId { get; set; }
         public  Municipality Municipality { get; set; }
         [Required(ErrorMessage = "Obligatoriskt fält")]
+        public OwnershipType OwnershipTypeId { get; set; }
         public  OwnershipType OwnershipType { get; set; }
+        public Street StreetId { get; set; }
         [Required(ErrorMessage= "Obligatoriskt fält")]
         public  Street Street { get; set; }
 
