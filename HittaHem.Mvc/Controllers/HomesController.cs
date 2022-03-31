@@ -23,8 +23,7 @@ namespace HittaHem.Mvc.Controllers
         // GET: Homes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Homes.Include(h => h.HousingType).Include(h => h.Municipality).Include(h => h.OwnershipType).Include(h => h.Street);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await _context.Homes.ToListAsync());
         }
 
         // GET: Homes/Details/5
@@ -36,10 +35,6 @@ namespace HittaHem.Mvc.Controllers
             }
 
             var home = await _context.Homes
-                .Include(h => h.HousingType)
-                .Include(h => h.Municipality)
-                .Include(h => h.OwnershipType)
-                .Include(h => h.Street)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (home == null)
             {
@@ -52,10 +47,6 @@ namespace HittaHem.Mvc.Controllers
         // GET: Homes/Create
         public IActionResult Create()
         {
-            ViewData["HousingTypeId"] = new SelectList(_context.HousingTypes, "Id", "Type");
-            ViewData["MunicipalityId"] = new SelectList(_context.Municipalities, "Id", "Id");
-            ViewData["OwnershipTypeId"] = new SelectList(_context.OwnershipTypes, "Id", "Name");
-            ViewData["StreetId"] = new SelectList(_context.Streets, "Id", "Name");
             return View();
         }
 
@@ -64,7 +55,7 @@ namespace HittaHem.Mvc.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MunicipalityId,Price,Description,RoomAmount,LivingArea,UninhabitableArea,GardenArea,HousingTypeId,OwnershipTypeId,BuildYear,UserId,StreetId,StreetNr")] Home home)
+        public async Task<IActionResult> Create([Bind("Id,Price,Description,RoomAmount,LivingArea,UninhabitableArea,GardenArea,BuildYear")] Home home)
         {
             if (ModelState.IsValid)
             {
@@ -72,10 +63,6 @@ namespace HittaHem.Mvc.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HousingTypeId"] = new SelectList(_context.HousingTypes, "Id", "Type", home.HousingTypeId);
-            ViewData["MunicipalityId"] = new SelectList(_context.Municipalities, "Id", "Id", home.MunicipalityId);
-            ViewData["OwnershipTypeId"] = new SelectList(_context.OwnershipTypes, "Id", "Name", home.OwnershipTypeId);
-            ViewData["StreetId"] = new SelectList(_context.Streets, "Id", "Name", home.StreetId);
             return View(home);
         }
 
@@ -92,10 +79,6 @@ namespace HittaHem.Mvc.Controllers
             {
                 return NotFound();
             }
-            ViewData["HousingTypeId"] = new SelectList(_context.HousingTypes, "Id", "Type", home.HousingTypeId);
-            ViewData["MunicipalityId"] = new SelectList(_context.Municipalities, "Id", "Id", home.MunicipalityId);
-            ViewData["OwnershipTypeId"] = new SelectList(_context.OwnershipTypes, "Id", "Name", home.OwnershipTypeId);
-            ViewData["StreetId"] = new SelectList(_context.Streets, "Id", "Name", home.StreetId);
             return View(home);
         }
 
@@ -104,7 +87,7 @@ namespace HittaHem.Mvc.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,MunicipalityId,Price,Description,RoomAmount,LivingArea,UninhabitableArea,GardenArea,HousingTypeId,OwnershipTypeId,BuildYear,UserId,StreetId,StreetNr")] Home home)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Price,Description,RoomAmount,LivingArea,UninhabitableArea,GardenArea,BuildYear")] Home home)
         {
             if (id != home.Id)
             {
@@ -131,10 +114,6 @@ namespace HittaHem.Mvc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HousingTypeId"] = new SelectList(_context.HousingTypes, "Id", "Type", home.HousingTypeId);
-            ViewData["MunicipalityId"] = new SelectList(_context.Municipalities, "Id", "Id", home.MunicipalityId);
-            ViewData["OwnershipTypeId"] = new SelectList(_context.OwnershipTypes, "Id", "Name", home.OwnershipTypeId);
-            ViewData["StreetId"] = new SelectList(_context.Streets, "Id", "Name", home.StreetId);
             return View(home);
         }
 
@@ -147,10 +126,6 @@ namespace HittaHem.Mvc.Controllers
             }
 
             var home = await _context.Homes
-                .Include(h => h.HousingType)
-                .Include(h => h.Municipality)
-                .Include(h => h.OwnershipType)
-                .Include(h => h.Street)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (home == null)
             {

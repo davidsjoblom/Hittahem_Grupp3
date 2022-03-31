@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace HittaHem.Mvc.Data.Migrations
+namespace HittaHem.Mvc.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220330085208_test")]
-    partial class test
+    [Migration("20220331110502_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,20 +23,6 @@ namespace HittaHem.Mvc.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("HittaHemEntityModels.Favourite", b =>
-                {
-                    b.Property<int>("HomeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.HasKey("HomeId");
-
-                    b.ToTable("Favourite");
-                });
 
             modelBuilder.Entity("HittaHemEntityModels.Home", b =>
                 {
@@ -76,17 +62,8 @@ namespace HittaHem.Mvc.Data.Migrations
                     b.Property<int>("StreetId")
                         .HasColumnType("int");
 
-                    b.Property<string>("StreetNr")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
                     b.Property<decimal?>("UninhabitableArea")
                         .HasColumnType("decimal(18,0)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
 
                     b.HasKey("Id");
 
@@ -109,7 +86,7 @@ namespace HittaHem.Mvc.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("HomeId")
+                    b.Property<int?>("HomeId")
                         .HasColumnType("int");
 
                     b.Property<byte[]>("Image")
@@ -117,7 +94,7 @@ namespace HittaHem.Mvc.Data.Migrations
                         .HasColumnType("varbinary(max)");
 
                     b.Property<DateTime>("UploadingDate")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -134,11 +111,11 @@ namespace HittaHem.Mvc.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("HomeId")
+                    b.Property<int?>("HomeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ViewingDate")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -163,20 +140,6 @@ namespace HittaHem.Mvc.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("HousingTypes");
-                });
-
-            modelBuilder.Entity("HittaHemEntityModels.InterestedUser", b =>
-                {
-                    b.Property<int>("HomeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.HasKey("HomeId");
-
-                    b.ToTable("InterestedUser");
                 });
 
             modelBuilder.Entity("HittaHemEntityModels.Municipality", b =>
@@ -223,7 +186,10 @@ namespace HittaHem.Mvc.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
-                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("StreetNr")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
@@ -434,17 +400,6 @@ namespace HittaHem.Mvc.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("HittaHemEntityModels.Favourite", b =>
-                {
-                    b.HasOne("HittaHemEntityModels.Home", "Home")
-                        .WithMany("Favourites")
-                        .HasForeignKey("HomeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Home");
-                });
-
             modelBuilder.Entity("HittaHemEntityModels.Home", b =>
                 {
                     b.HasOne("HittaHemEntityModels.HousingType", "HousingType")
@@ -484,9 +439,7 @@ namespace HittaHem.Mvc.Data.Migrations
                 {
                     b.HasOne("HittaHemEntityModels.Home", "Home")
                         .WithMany("HomeImages")
-                        .HasForeignKey("HomeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("HomeId");
 
                     b.Navigation("Home");
                 });
@@ -495,20 +448,7 @@ namespace HittaHem.Mvc.Data.Migrations
                 {
                     b.HasOne("HittaHemEntityModels.Home", "Home")
                         .WithMany("HomeViewings")
-                        .HasForeignKey("HomeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Home");
-                });
-
-            modelBuilder.Entity("HittaHemEntityModels.InterestedUser", b =>
-                {
-                    b.HasOne("HittaHemEntityModels.Home", "Home")
-                        .WithMany("InterestedUsers")
-                        .HasForeignKey("HomeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("HomeId");
 
                     b.Navigation("Home");
                 });
@@ -566,13 +506,9 @@ namespace HittaHem.Mvc.Data.Migrations
 
             modelBuilder.Entity("HittaHemEntityModels.Home", b =>
                 {
-                    b.Navigation("Favourites");
-
                     b.Navigation("HomeImages");
 
                     b.Navigation("HomeViewings");
-
-                    b.Navigation("InterestedUsers");
                 });
 
             modelBuilder.Entity("HittaHemEntityModels.HousingType", b =>

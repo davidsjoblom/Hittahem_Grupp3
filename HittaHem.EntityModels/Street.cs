@@ -11,12 +11,13 @@ namespace HittaHemEntityModels
     public  class Street
     {
       
-
         public int Id { get; set; }
-        [Required]
+    
         [StringLength(250)]
         public string Name { get; set; }
    
-        public  ICollection<Home> Homes { get; set; }
+        [StringLength(250)]
+        public string StreetNr { get; set; } 
+        public  ICollection<Home> Homes { get; set; }=new List<Home>();
     }
 }

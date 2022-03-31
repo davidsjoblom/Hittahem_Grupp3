@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
@@ -14,9 +15,8 @@ namespace HittaHemEntityModels
         public int Id { get; set; }
         [Required]
         public byte[] Image { get; set; }
-        public int HomeId { get; set; }
-        [Column(TypeName = "date")]
+
         public DateTime UploadingDate { get; set; }
-        public  Home Home { get; set; }
+        public Home Home { get; set; }
     }
 }

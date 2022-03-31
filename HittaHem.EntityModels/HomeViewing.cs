@@ -13,8 +13,7 @@ namespace HittaHemEntityModels
        
         public int Id { get; set; }
         
-        [Column(TypeName = "datetime")]
         public DateTime ViewingDate { get; set; }
-        public Home Home { get; set; }
+        public  Home Home { get; set; }
     }
 }

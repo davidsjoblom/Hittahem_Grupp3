@@ -24,4 +24,8 @@
     <ProjectReference Include="..\HittaHem.EntityModels\HittaHem.EntityModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

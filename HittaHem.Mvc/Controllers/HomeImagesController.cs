@@ -23,8 +23,7 @@ namespace HittaHem.Mvc.Controllers
         // GET: HomeImages
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.HomeImages.Include(h => h.Home);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await _context.HomeImages.ToListAsync());
         }
 
         // GET: HomeImages/Details/5
@@ -36,7 +35,6 @@ namespace HittaHem.Mvc.Controllers
             }
 
             var homeImage = await _context.HomeImages
-                .Include(h => h.Home)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (homeImage == null)
             {
@@ -49,7 +47,6 @@ namespace HittaHem.Mvc.Controllers
         // GET: HomeImages/Create
         public IActionResult Create()
         {
-            ViewData["HomeId"] = new SelectList(_context.Homes, "Id", "UserId");
             return View();
         }
 
@@ -58,7 +55,7 @@ namespace HittaHem.Mvc.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Image,HomeId,UploadingDate")] HomeImage homeImage)
+        public async Task<IActionResult> Create([Bind("Id,Image,UploadingDate")] HomeImage homeImage)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +63,6 @@ namespace HittaHem.Mvc.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HomeId"] = new SelectList(_context.Homes, "Id", "UserId", homeImage.HomeId);
             return View(homeImage);
         }
 
@@ -83,7 +79,6 @@ namespace HittaHem.Mvc.Controllers
             {
                 return NotFound();
             }
-            ViewData["HomeId"] = new SelectList(_context.Homes, "Id", "UserId", homeImage.HomeId);
             return View(homeImage);
         }
 
@@ -92,7 +87,7 @@ namespace HittaHem.Mvc.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,HomeId,UploadingDate")] HomeImage homeImage)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Image,UploadingDate")] HomeImage homeImage)
         {
             if (id != homeImage.Id)
             {
@@ -119,7 +114,6 @@ namespace HittaHem.Mvc.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["HomeId"] = new SelectList(_context.Homes, "Id", "UserId", homeImage.HomeId);
             return View(homeImage);
         }
 
@@ -132,7 +126,6 @@ namespace HittaHem.Mvc.Controllers
             }
 
             var homeImage = await _context.HomeImages
-                .Include(h => h.Home)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (homeImage == null)
             {
