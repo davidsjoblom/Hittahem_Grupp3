@@ -10,18 +10,12 @@ namespace HittaHemEntityModels
 {
     public  class OwnershipType
     {
-        public OwnershipType()
-        {
-            Homes = new HashSet<Home>();
-        }
+     
 
-        [Key]
         public int Id { get; set; }
         [Required]
         [StringLength(250)]
-        public string Name { get; set; }
-
-        [InverseProperty(nameof(Home.OwnershipType))]
-        public virtual ICollection<Home> Homes { get; set; }
+        public string Name { get; set; }   
+        public  ICollection<Home> Homes { get; set; }
     }
 }

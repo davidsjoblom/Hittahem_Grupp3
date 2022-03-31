@@ -10,15 +10,8 @@ namespace HittaHemEntityModels
 {
     public  class Home
     {
-        public Home()
-        {
-            Favourites = new HashSet<Favourite>();
-            HomeImages = new HashSet<HomeImage>();
-            HomeViewings = new HashSet<HomeViewing>();
-            InterestedUsers = new HashSet<InterestedUser>();
-        }
-
-        [Key]
+     
+       
         public int Id { get; set; }
         public int MunicipalityId { get; set; }
         [Column(TypeName = "money")]
@@ -41,26 +34,19 @@ namespace HittaHemEntityModels
         public int StreetId { get; set; }
         [StringLength(250)]
         public string StreetNr { get; set; }
+    
+        public HousingType HousingType { get; set; }      
+      
+        public  Municipality Municipality { get; set; }
+     
+        public  OwnershipType OwnershipType { get; set; }
+        public  Street Street { get; set; }
+    
+        
+  
+        public  ICollection<HomeImage> HomeImages { get; set; }
+  
+        public  ICollection<HomeViewing> HomeViewings { get; set; }
 
-        [ForeignKey(nameof(HousingTypeId))]
-        [InverseProperty("Homes")]
-        public virtual HousingType HousingType { get; set; }
-        [ForeignKey(nameof(MunicipalityId))]
-        [InverseProperty("Homes")]
-        public virtual Municipality Municipality { get; set; }
-        [ForeignKey(nameof(OwnershipTypeId))]
-        [InverseProperty("Homes")]
-        public virtual OwnershipType OwnershipType { get; set; }
-        [ForeignKey(nameof(StreetId))]
-        [InverseProperty("Homes")]
-        public virtual Street Street { get; set; }
-        [InverseProperty(nameof(Favourite.Home))]
-        public virtual ICollection<Favourite> Favourites { get; set; }
-        [InverseProperty(nameof(HomeImage.Home))]
-        public virtual ICollection<HomeImage> HomeImages { get; set; }
-        [InverseProperty(nameof(HomeViewing.Home))]
-        public virtual ICollection<HomeViewing> HomeViewings { get; set; }
-        [InverseProperty(nameof(InterestedUser.Home))]
-        public virtual ICollection<InterestedUser> InterestedUsers { get; set; }
     }
 }

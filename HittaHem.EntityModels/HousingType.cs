@@ -10,18 +10,12 @@ namespace HittaHemEntityModels
 {
     public  class HousingType
     {
-        public HousingType()
-        {
-            Homes = new HashSet<Home>();
-        }
 
-        [Key]
+     
         public int Id { get; set; }
         [Required]
         [StringLength(250)]
         public string Type { get; set; }
-
-        [InverseProperty(nameof(Home.HousingType))]
-        public virtual ICollection<Home> Homes { get; set; }
+        public  ICollection<Home> Homes { get; set; }
     }
 }

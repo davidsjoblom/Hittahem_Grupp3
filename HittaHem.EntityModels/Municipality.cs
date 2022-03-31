@@ -10,17 +10,10 @@ namespace HittaHemEntityModels
 {
     public  class Municipality
     {
-        public Municipality()
-        {
-            Homes = new HashSet<Home>();
-        }
-
-        [Key]
+  
         public int Id { get; set; }
         [StringLength(250)]
         public string Name { get; set; }
-
-        [InverseProperty(nameof(Home.Municipality))]
-        public virtual ICollection<Home> Homes { get; set; }
+        public  ICollection<Home> Homes { get; set; }
     }
 }

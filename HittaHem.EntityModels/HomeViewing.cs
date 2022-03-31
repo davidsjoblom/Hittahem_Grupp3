@@ -8,16 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HittaHemEntityModels
 {
-    public  class HomeViewing
+    public class HomeViewing
     {
-        [Key]
+       
         public int Id { get; set; }
-        public int HomeId { get; set; }
+        
         [Column(TypeName = "datetime")]
         public DateTime ViewingDate { get; set; }
-
-        [ForeignKey(nameof(HomeId))]
-        [InverseProperty("HomeViewings")]
-        public virtual Home Home { get; set; }
+        public Home Home { get; set; }
     }
 }
