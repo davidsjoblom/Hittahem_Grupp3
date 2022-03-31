@@ -10,8 +10,6 @@ namespace HittaHemEntityModels
 {
     public  class Home
     {
-     
-       
         public int Id { get; set; }
         public int MunicipalityId { get; set; }
         [Column(TypeName = "money")]
@@ -34,19 +32,19 @@ namespace HittaHemEntityModels
         public int StreetId { get; set; }
         [StringLength(250)]
         public string StreetNr { get; set; }
-    
+        [Required(ErrorMessage="Obligatoriskt fält")]
         public HousingType HousingType { get; set; }      
-      
+        [Required(ErrorMessage = "Obligatoriskt fält")]
         public  Municipality Municipality { get; set; }
-     
+        [Required(ErrorMessage = "Obligatoriskt fält")]
         public  OwnershipType OwnershipType { get; set; }
+        [Required(ErrorMessage= "Obligatoriskt fält")]
         public  Street Street { get; set; }
-    
-        
+
+
+        public ICollection<HomeImage> HomeImages { get; set; } = new List<HomeImage>();
   
-        public  ICollection<HomeImage> HomeImages { get; set; }
-  
-        public  ICollection<HomeViewing> HomeViewings { get; set; }
+        public  ICollection<HomeViewing> HomeViewings { get; set; }=new List<HomeViewing>();
 
     }
 }

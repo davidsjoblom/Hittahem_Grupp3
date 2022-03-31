@@ -10,12 +10,10 @@ namespace HittaHemEntityModels
 {
     public  class HousingType
     {
-
-     
         public int Id { get; set; }
         [Required]
         [StringLength(250)]
         public string Type { get; set; }
-        public  ICollection<Home> Homes { get; set; }
+        public  ICollection<Home> Homes { get; set; }=new List<Home>();
     }
 }

@@ -1,0 +1,89 @@
+﻿@model HittaHemEntityModels.Home
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Home</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MunicipalityId" class="control-label"></label>
+                <select asp-for="MunicipalityId" class ="form-control" asp-items="ViewBag.MunicipalityId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoomAmount" class="control-label"></label>
+                <input asp-for="RoomAmount" class="form-control" />
+                <span asp-validation-for="RoomAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LivingArea" class="control-label"></label>
+                <input asp-for="LivingArea" class="form-control" />
+                <span asp-validation-for="LivingArea" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UninhabitableArea" class="control-label"></label>
+                <input asp-for="UninhabitableArea" class="form-control" />
+                <span asp-validation-for="UninhabitableArea" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GardenArea" class="control-label"></label>
+                <input asp-for="GardenArea" class="form-control" />
+                <span asp-validation-for="GardenArea" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HousingTypeId" class="control-label"></label>
+                <select asp-for="HousingTypeId" class ="form-control" asp-items="ViewBag.HousingTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="OwnershipTypeId" class="control-label"></label>
+                <select asp-for="OwnershipTypeId" class ="form-control" asp-items="ViewBag.OwnershipTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuildYear" class="control-label"></label>
+                <input asp-for="BuildYear" class="form-control" />
+                <span asp-validation-for="BuildYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StreetId" class="control-label"></label>
+                <select asp-for="StreetId" class ="form-control" asp-items="ViewBag.StreetId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="StreetNr" class="control-label"></label>
+                <input asp-for="StreetNr" class="form-control" />
+                <span asp-validation-for="StreetNr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

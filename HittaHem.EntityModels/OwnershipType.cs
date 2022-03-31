@@ -9,9 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace HittaHemEntityModels
 {
     public  class OwnershipType
-    {
-     
-
+    {    
         public int Id { get; set; }
         [Required]
         [StringLength(250)]
