@@ -12,11 +12,11 @@ namespace HittaHemEntityModels
     public  class HomeImage
     {
      
-        public int Id { get; set; }
+        public int ImageId { get; set; }
         [Required]
         public byte[] Image { get; set; }
 
         public DateTime UploadingDate { get; set; }
-        public Home Home { get; set; }
+        public Home HomeId { get; set; }
     }
 }

@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HittaHemEntityModels
 {
-    public  class HousingType
+    public class HousingType
     {
-        public int Id { get; set; }
+        public int HousingTypeId { get; set; }
         [Required]
         [StringLength(250)]
         public string Type { get; set; }

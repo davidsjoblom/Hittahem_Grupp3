@@ -10,7 +10,7 @@ namespace HittaHemEntityModels
 {
     public  class Home
     {
-        public int Id { get; set; }
+        public int HomeId { get; set; }
        
         [Column(TypeName = "money")]
         public decimal? Price { get; set; }
@@ -24,18 +24,18 @@ namespace HittaHemEntityModels
         public decimal? GardenArea { get; set; }
         [Column(TypeName = "date")]
         public DateTime? BuildYear { get; set; }
-        public HousingType Id { get; set; }
+       
         [Required(ErrorMessage="Obligatoriskt fält")]
-        public HousingType HousingType { get; set; }      
+        public HousingType HousingTypeId { get; set; }      
+     
         [Required(ErrorMessage = "Obligatoriskt fält")]
-        public Municipality MunicipalityId { get; set; }
-        public  Municipality Municipality { get; set; }
+        public  Municipality MunicipalityId { get; set; }
         [Required(ErrorMessage = "Obligatoriskt fält")]
-        public OwnershipType OwnershipTypeId { get; set; }
-        public  OwnershipType OwnershipType { get; set; }
-        public Street StreetId { get; set; }
+   
+        public  OwnershipType OwnershipTypeId { get; set; }
+       
         [Required(ErrorMessage= "Obligatoriskt fält")]
-        public  Street Street { get; set; }
+        public  Street StreetId { get; set; }
 
         public ICollection<HomeImage> HomeImages { get; set; } = new List<HomeImage>();
   

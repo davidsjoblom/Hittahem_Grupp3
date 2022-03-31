@@ -10,7 +10,7 @@ namespace HittaHemEntityModels
 {
     public  class OwnershipType
     {    
-        public int Id { get; set; }
+        public int OwnershipTypeId { get; set; }
         [Required]
         [StringLength(250)]
         public string Name { get; set; }
